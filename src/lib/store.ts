@@ -7,9 +7,9 @@ export interface TodoItem {
   id: string;
   text: string;
   done: boolean;
-  comment?: string;
-  important?: boolean;
-  snoozed?: boolean;
+  comment?: string | undefined;
+  important?: boolean | undefined;
+  snoozed?: boolean | undefined;
 }
 
 export interface TodoList {
