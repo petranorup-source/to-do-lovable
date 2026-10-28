@@ -512,7 +512,7 @@ function InviteDialog({ contributors, onAdd, onRemove, onClose }: { contributors
   );
 }
 
-function ToolBtn({ label, onClick, disabled, children }: { label: string; onClick: () => void; disabled?: boolean; children: React.ReactNode }) {
+function ToolBtn({ label, onClick, disabled, children }: { label: string; onClick: () => void; disabled?: boolean | undefined; children: React.ReactNode }) {
   return (
     <button aria-label={label} onClick={onClick} disabled={disabled} className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-opacity disabled:opacity-50">
       {children}
@@ -520,7 +520,7 @@ function ToolBtn({ label, onClick, disabled, children }: { label: string; onClic
   );
 }
 
-function MenuBtn({ icon, onClick, active, children }: { icon: React.ReactNode; onClick: () => void; active?: boolean; children: React.ReactNode }) {
+function MenuBtn({ icon, onClick, active, children }: { icon: React.ReactNode; onClick: () => void; active?: boolean | undefined; children: React.ReactNode }) {
   return (
     <button onClick={onClick} className={`flex w-full items-center gap-3 px-4 py-3 text-left text-sm hover:bg-accent ${active ? "bg-accent" : ""}`}>
       {icon} {children}
