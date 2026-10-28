@@ -147,7 +147,7 @@ function Editor({ list }: { list: TodoList }) {
     update((l) => {
       const items = [...l.items];
       const from = items.findIndex((i) => i.id === dragId);
-      const [moved] = items.splice(from, 1);
+      const moved = items.splice(from, 1)[0]!;
       items.splice(items.findIndex((i) => i.id === targetId), 0, moved);
       return { ...l, items };
     });
