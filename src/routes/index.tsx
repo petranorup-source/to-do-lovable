@@ -70,9 +70,10 @@ function Home() {
         </div>
       </header>
 
-      {lists.length === 0 ? (
-        <>
-          <p className="py-24 text-center text-2xl">Lists you add appear here</p>
+      
+
+          {/* Original empty text & divider */}
+          <p className="py-24 text-center text-2xl font-normal">Lists you add appear here</p>
           <div className="-mx-4 border-t border-border" />
         </>
       ) : shown.length === 0 ? (
@@ -118,3 +119,44 @@ function Home() {
     </div>
   );
 }
+{lists.length === 0 ? (:;
+  <>
+    {/* Figma Vector Ghost Lists */}
+    <div className={grid ? "mt-4 grid grid-cols-2 gap-3" : "mt-4 flex flex-col gap-3"}>
+      <button
+        type="button"
+        onClick={add}
+        className="block w-full cursor-pointer text-left transition-transform hover:scale-[1.01] active:scale-[0.99]"
+        title="Create new list"
+      >
+        <img
+          src="/empty-list-1.svg"
+          alt="Empty list placeholder"
+          className="w-full rounded-2xl opacity-80 transition-opacity hover:opacity-100"
+        />
+      </button>
+      <button
+        type="button"
+        onClick={add}
+        className="block w-full cursor-pointer text-left transition-transform hover:scale-[1.01] active:scale-[0.99]"
+        title="Create new list"
+      >
+        <img
+          src="/empty-lists-2.svg"
+          alt="Empty list placeholder"
+          className="w-full rounded-2xl opacity-80 transition-opacity hover:opacity-100"
+        />
+      </button>
+      <button
+        type="button"
+        onClick={add}
+        className="block w-full cursor-pointer text-left transition-transform hover:scale-[1.01] active:scale-[0.99]"
+        title="Create new list"
+      >
+        <img
+          src="/empty-list-3.svg"
+          alt="Empty list placeholder"
+          className="w-full rounded-2xl opacity-80 transition-opacity hover:opacity-100"
+        />
+      </button>
+    </div>
