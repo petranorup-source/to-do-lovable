@@ -28,10 +28,11 @@ function Home() {
   const shown = useMemo(() => {
     const term = q.toLowerCase();
     const f = lists.filter(
-      (l) =>
-        !term ||
-        l.title.toLowerCase().includes(term) ||
-        l.items.some((i) => i.text.toLowerCase().includes(term)),
+      !term
+        ? Boolean
+        : (l) =>
+            l.title.toLowerCase().includes(term) ||
+            l.items.some((i) => i.text.toLowerCase().includes(term)),
     );
     return [...f].sort((a, b) =>
       sort === "title" ? (a.title || "").localeCompare(b.title || "") : b.updatedAt - a.updatedAt,
@@ -70,11 +71,55 @@ function Home() {
         </div>
       </header>
 
-      
+      {lists.length === 0 ? (
+        <>
+          {/* 1. Auto Layout frame with 92px padding above and below */}
+          <div className="flex flex-col items-center justify-center py-[92px]">
+            <p className="text-center text-2xl font-normal">Lists you add appear here</p>
+          </div>
 
-          {/* Original empty text & divider */}
-          <p className="py-24 text-center text-2xl font-normal">Lists you add appear here</p>
+          {/* 2. Divider line above the SVGs */}
           <div className="-mx-4 border-t border-border" />
+
+          {/* 3. Figma Vector Ghost Lists below the divider with mt-12 gap */}
+          <div className={grid ? "mt-12 grid grid-cols-2 gap-3" : "mt-12 flex flex-col gap-3"}>
+            <button
+              type="button"
+              onClick={add}
+              className="block w-full cursor-pointer text-left transition-transform hover:scale-[1.01] active:scale-[0.99]"
+              title="Create new list"
+            >
+              <img
+                src="/empty-list-1.svg"
+                alt="Empty list placeholder"
+                className="w-full rounded-2xl opacity-80 transition-opacity hover:opacity-100"
+              />
+            </button>
+            <button
+              type="button"
+              onClick={add}
+              className="block w-full cursor-pointer text-left transition-transform hover:scale-[1.01] active:scale-[0.99]"
+              title="Create new list"
+            >
+              <img
+                src="/empty-lists-2.svg"
+                alt="Empty list placeholder"
+                className="w-full rounded-2xl opacity-80 transition-opacity hover:opacity-100"
+              />
+            </button>
+            <button
+              type="button"
+              onClick={add}
+              className="block w-full cursor-pointer text-left transition-transform hover:scale-[1.01] active:scale-[0.99]"
+              title="Create new list"
+            >
+              <img
+                src="/empty-list-3.svg"
+                alt="Empty list placeholder"
+                className="w-full rounded-2xl opacity-80 transition-opacity hover:opacity-100"
+              />
+            </button>
+          </div>
         </>
       ) : shown.length === 0 ? (
         <p className="py-24 text-center text-lg text-muted-foreground">No lists match “{q}”</p>
@@ -119,44 +164,3 @@ function Home() {
     </div>
   );
 }
-{lists.length === 0 ? (:;
-  <>
-    {/* Figma Vector Ghost Lists */}
-    <div className={grid ? "mt-4 grid grid-cols-2 gap-3" : "mt-4 flex flex-col gap-3"}>
-      <button
-        type="button"
-        onClick={add}
-        className="block w-full cursor-pointer text-left transition-transform hover:scale-[1.01] active:scale-[0.99]"
-        title="Create new list"
-      >
-        <img
-          src="/empty-list-1.svg"
-          alt="Empty list placeholder"
-          className="w-full rounded-2xl opacity-80 transition-opacity hover:opacity-100"
-        />
-      </button>
-      <button
-        type="button"
-        onClick={add}
-        className="block w-full cursor-pointer text-left transition-transform hover:scale-[1.01] active:scale-[0.99]"
-        title="Create new list"
-      >
-        <img
-          src="/empty-lists-2.svg"
-          alt="Empty list placeholder"
-          className="w-full rounded-2xl opacity-80 transition-opacity hover:opacity-100"
-        />
-      </button>
-      <button
-        type="button"
-        onClick={add}
-        className="block w-full cursor-pointer text-left transition-transform hover:scale-[1.01] active:scale-[0.99]"
-        title="Create new list"
-      >
-        <img
-          src="/empty-list-3.svg"
-          alt="Empty list placeholder"
-          className="w-full rounded-2xl opacity-80 transition-opacity hover:opacity-100"
-        />
-      </button>
-    </div>
